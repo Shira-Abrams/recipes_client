@@ -1,0 +1,24 @@
+.all-recipe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.single-recipe {
+    flex: 1 1 calc(33.33% - 40px); /* Responsive sizing for three cards per row */
+    box-sizing: border-box;
+    margin: 10px;
+}
+@media (max-width: 900px) {
+    .single-recipe {
+        flex: 1 1 calc(50% - 40px); /* Two cards per row on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .single-recipe {
+        flex: 1 1 100%; /* Full width on small screens */
+        max-width: none;
+    }
+}

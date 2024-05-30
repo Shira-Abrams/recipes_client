@@ -1,0 +1,10 @@
+<div class="all-recipe">
+<div 
+class="single-recipe" 
+*ngFor="let item of this.recipes ; let i=index"
+>
+<app-single-recipe [singleRecipe]="item"> </app-single-recipe>
+</div>
+
+
+</div>

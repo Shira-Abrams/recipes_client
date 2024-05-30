@@ -1,0 +1,39 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure the card stretches */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    flex: 1 0 80%;
+}
+
+.card-text {
+    flex: 1 0 20%;
+    padding: 16px;
+    background-color: #f9f9f9;
+    text-align: right
+}
+h2{
+    margin: 0;
+    font-weight: 200;
+
+}
+#warpRank{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#rank{
+    display: flex;
+    flex-direction: row;
+    width: 3%;
+    height: 3%;
+}

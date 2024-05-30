@@ -1,0 +1,88 @@
+.example-form {
+    min-width: 150px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+ 
+  .inputs{
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+    width: 20%;
+  }
+
+  form{
+    
+    // margin-top: 15%;
+    // margin-right: 30%;
+  }
+  input{
+    
+    padding: 4%;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    width:100%;
+    transition: border-color 0.3s ease;
+    margin-bottom: 2%;
+}
+input:focus{
+   // border-color: red;
+}
+.inputError{
+  border-color: red;
+}
+
+.img{
+    width: 5%;
+    margin-bottom: 0%;
+}
+.mat-label{
+  margin-top: 1%;
+}
+
+ #signup{
+ // font-size: 100%;
+   font-weight: 200;
+ } 
+ .errors{
+  color: red;
+  margin: 0;
+ }
+ ///
+ /// 
+ /// 
+ /// 
+ 
+ .but{
+  background-color: black; /* Primary color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+ width: 100%;
+  /* Box shadow for depth */
+ }
+
+ .but:hover {
+  background-color: red; /* Darker shade of primary color */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Disable button styling */
+.but:disabled {
+  background-color: #cccccc; /* Grey color for disabled state */
+  cursor: not-allowed; /* Not allowed cursor for disabled state */
+  box-shadow: none; /* Remove box shadow */
+  width: 100%;
+}

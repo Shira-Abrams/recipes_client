@@ -1,0 +1,104 @@
+.header{
+    height: 15vh;
+   width: 100%;
+    
+     top:0;
+     right: 0;
+     left: 0;
+     display: flex;
+     flex-direction: row;
+     margin-left: 4%;
+     background-color: white;
+}
+.img{
+    height: 15vh;
+}
+.route{
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    align-items: center;
+}
+div>a{
+  margin: 1%;
+    color: red;
+    text-decoration: none;
+}
+footer{
+position: absolute;
+ bottom: 0;
+ height: 15vh;
+ background-color: black;
+ width: 100%;
+}
+ section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.round-div {
+  width: 7vh; 
+  height: 7vh; 
+  background-color: black; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; 
+  color: white; 
+}
+.profileEria{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1%;
+  width: 100%;
+  justify-content: left;
+}
+#pro{
+   height: 7vh;
+    width: 7vh;
+}
+button{
+  background-color: black; /* Primary color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius:5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+ width: 24%;
+ margin-left: 2%;
+}
+button>a{
+  color: white;
+  text-decoration: none;
+}

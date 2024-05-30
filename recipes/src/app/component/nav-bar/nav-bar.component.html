@@ -1,0 +1,49 @@
+    <header class="header" >
+        
+       
+
+        <div class="route">
+            <a routerLink="/home"> 
+                <img src="../../../assets/foodTuch.png" alt="logo" class="img">
+            </a>
+            <a routerLink="/categories">קטגוריות</a>
+            <a routerLink="/allRecipe" routerLinkActive="router-link-active" >לכלת המתכונים</a>
+            @if(userService.token){
+                    <a href="">ספר המתכונים שלי</a>   
+                    <a href="">העלאת מתכון</a>           
+                 }
+
+                 
+        </div>
+
+    <div class="profileEria">
+        @if(!userService.token){
+            <button>
+                 <a routerLink="/register" style="pad: 1vh;">הרשמה / </a>
+                 <a routerLink="/login">התחברות</a>
+            </button>
+           
+            <img src="../../../assets/profileIcon.png" alt="profile icon" id="pro" onclick="openMenue()">
+
+           }
+           @else {
+                <button style="width: 13%;">
+                    <a  (click)="LogOut()" >התנתקות</a>
+
+                </button>
+                <div class="round-div" id="user-initials" onclick="openMenue()">{{shortUserName()}}</div>
+           }
+    </div>
+
+       
+
+</header>
+
+<div *ngIf="this.openProfile" >
+   
+
+
+</div>
+
+
+

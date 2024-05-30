@@ -1,0 +1,77 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+input{
+    
+    padding: 4%;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    width:100%;
+    transition: border-color 0.3s ease;
+    margin-bottom: 2%;
+}
+.mat-label{
+    margin-top: 1%;
+  }
+  
+   #signup{
+   // font-size: 100%;
+     font-weight: 200;
+   } 
+   .errors{
+    color: red;
+    margin: 0;
+   }
+
+   .but{
+    background-color: black; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+   width: 100%;
+   margin-top: 2%;
+    /* Box shadow for depth */
+   }
+  
+   .but:hover {
+    background-color: red; /* Darker shade of primary color */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
+  .img{
+    width: 5%;
+    margin-bottom: 0%;
+}
+#signup{
+    // font-size: 100%;
+      font-weight: 200;
+    } 
+.but:disabled {
+    background-color: #cccccc; /* Grey color for disabled state */
+    cursor: not-allowed; /* Not allowed cursor for disabled state */
+    box-shadow: none; /* Remove box shadow */
+    width: 100%;
+}
+.input{
+ display: flex;
+ flex-direction: column;
+ margin: 1%;
+ width: 20%;    
+}
+.regitbut{
+  display: flex;
+  flex-direction: row;
+}
+.regitbut>button{
+  margin: 2%;
+}

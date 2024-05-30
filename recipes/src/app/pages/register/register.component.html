@@ -1,0 +1,76 @@
+
+    <form ngForm #myForm="ngForm"  class="example-form" (ngSubmit)="onSubmit(myForm)">
+        <img src="../../../assets/padlock.png" alt="lock " class="img">
+        <h1 id="signup">Sign up</h1>
+        <div class="inputs">
+              <mat-label class="mat-label">שם </mat-label>
+              <input 
+              type="text"
+              name="username"
+              placeholder="שם משתמש" 
+              required 
+              minlength="4"
+              maxlength="8"
+              ngModel
+              #name="ngModel"
+              pattern="^[a-zA-Z0-9]+$"
+              [ngClass]="{inputError: name.errors&&(name.touched)}"
+
+              >
+            <p  *ngIf="name.dirty && name.getError('minlength')&&!name.getError('pattern') " class="errors"> {{'שם משתמש צריך להכיל לפחות 4 תווים' }} </p>
+            <p *ngIf="name.getError('required')&&( name.touched||name.touched)" class="errors"> *שדה חובה</p>
+            <p *ngIf="name.getError('pattern')&&(name.dirty)" class="errors">{{'שם משתש חיב אינו יכול לכלול תוים אחרים מלבד אותיות ומספרים'}}</p>
+             
+
+            <mat-label class="mat-label">כתובת </mat-label>
+              <input 
+              type="text"
+              name="address"
+              placeholder="כתובת " 
+              ngModel
+              #addres="ngModel"
+              >
+
+
+            <mat-label class="mat-label"> מייל</mat-label>
+            <input  
+            name="email"
+            placeholder="מייל"
+             type="email"
+             ngModel
+             #emailModel="ngModel"
+             pattern="^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@gmail\.com$"
+             required
+             [ngModel]="this.email"
+             [ngClass]="{inputError: emailModel.errors&&(emailModel.touched)}"
+            >
+            <p *ngIf="emailModel.dirty && emailModel.getError('pattern')" class="errors">{{ 'הקש מייל תקין '}}</p>
+            <p class="errors" *ngIf="emailModel.getError('required')&&emailModel.touched"> *שדה חובה</p>
+            <mat-label class="mat-label">סיסמה</mat-label>
+            <input 
+            name="password" 
+            placeholder="סיסמה" 
+            type="password" 
+            ngModel
+            #passwordModel="ngModel"
+            [ngModel]="this.password"
+            required 
+            minlength="8"
+            maxlength="16"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$"
+            [ngClass]="{inputError: passwordModel.errors&&passwordModel.touched}"
+            >
+            <p class="errors"  *ngIf="passwordModel.getError('required') && (passwordModel.dirty || passwordModel.touched)">
+              *שדה חובה
+            </p>
+            <p  class='errors' *ngIf="passwordModel.getError('pattern')&&passwordModel.dirty&&!(passwordModel.getError('minlength'||passwordModel.getError('maxlength')))" >
+            {{'סיסמה חזקה חיבת להכיל רק אותיות באנגלית לפחות אות אחת גדולה ספרה אחת  ותו אחד לפחות'}}
+            </p>
+            <p class="errors" *ngIf="(passwordModel.getError('minlength')||passwordModel.getError('maxlength'))&&passwordModel.dirty">{{'הסיסמא חיבת לכלול 8-16 תווים'}}</p>
+            <p *ngIf="this.isExistUser" class="errors">משתמש קים </p>
+            <button class="but" [disabled]="myForm.invalid">הרשם</button>
+
+        </div>
+         
+      </form>
+
