@@ -2,23 +2,187 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
+    padding: 2%;
 }
 
 .single-recipe {
-    flex: 1 1 calc(33.33% - 40px); /* Responsive sizing for three cards per row */
+  // flex: 1 1 calc(33.33% - 40px); /* Responsive sizing for three cards per row */
+    width: 30%;
     box-sizing: border-box;
-    margin: 10px;
+    margin: 1.2%;
 }
 @media (max-width: 900px) {
     .single-recipe {
-        flex: 1 1 calc(50% - 40px); /* Two cards per row on medium screens */
+        width: 47%;
+        box-sizing: border-box;
+        margin: 1.2%;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .single-recipe {
-        flex: 1 1 100%; /* Full width on small screens */
-        max-width: none;
+      //  flex: 1 1 100%; /* Full width on small screens */
+         max-width: none;
+         width: 100%;
+         box-sizing: border-box;
+         margin: 1.2%;
     }
 }
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 12%;
+   // margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 1%;
+  }
+  
+  .search-icon {
+    width: 10%;
+    padding: 3%;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 3%;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+  
+  .search-input::placeholder {
+    color: #aaa;
+  }
+  button{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1%;
+    font-size: 80%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 9%;
+    /* margin-left: 2%; */
+    height: 0.1%;
+    text-align: center;
+  }
+  button:hover{
+    background-color: red;
+  }
+  #buttons{
+    display: flex;
+    flex-direction: row;
+    height:  100%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: 1%;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #filter{
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+
+  }
+  .select-container {
+    position: relative;
+    width: 200px;
+    margin: 1%;
+  }
+  
+  /* Style the select input */
+  .styled-select {
+    display: block;
+    width: 100%;
+    padding: 2%;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #000;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .styled-select:hover {
+    border-color: #333;
+  }
+  
+  .styled-select:focus {
+    outline: none;
+    border-color: #000;
+    background-color: transparent;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .select-container::after {
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #000;
+    font-size: 12px;
+  }
+  
+  .styled-select::-ms-expand {
+    display: none;
+  }
+  
+  .select-container select {
+    background: none;
+    border: none;
+    padding: 0.9%;
+    font-size: 100%;
+    border-bottom: 2px solid #000;
+    color: #000;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .select-container select option {
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .select-container select option:hover,
+  .select-container select option:focus {
+    background: #f0f0f0;
+  }
+
+  header{
+    display: flex;
+    flex-direction: row;
+  }
+  #filterIcon>img{
+    width: 4%;
+    margin-left: 2%;
+  }
+  #filterIcon{
+    display: flex;
+    flex-direction: row;
+   // justify-content: center;
+    align-items: center;
+  }

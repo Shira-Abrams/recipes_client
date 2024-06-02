@@ -9,12 +9,12 @@ export class CategorieServiceService {
   private baseCategoryUrl='http://localhost:5000/categories'
   constructor() { }
   getAllCategories(){
-    this.http.get<Categories>(`${this.baseCategoryUrl}/getallcategories`)
+    return this.http.get<Categories[]>(`${this.baseCategoryUrl}/getallcategories`)
   }
   getAllCategoriesAndRecipes(){
-    this.http.get<Categories>(`${this.baseCategoryUrl}/getAllCategoriesAndRecipe`)
+    return this.http.get<Categories[]>(`${this.baseCategoryUrl}/getAllCategoriesAndRecipe`)
   }
   getCategoriesByIdAndRecipe(id:string){
-    this.http.get<Categories>(`${this.baseCategoryUrl}/getCategoryByIdWithRec/${id}`)
+    return this.http.get<Categories>(`${this.baseCategoryUrl}/getCategoryByIdWithRec/${id}`)
   }
 }

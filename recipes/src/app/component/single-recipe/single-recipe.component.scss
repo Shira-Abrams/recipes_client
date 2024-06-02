@@ -1,6 +1,6 @@
 .card {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 2%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -10,14 +10,13 @@
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    flex: 1 0 80%;
 }
 
 .card-text {
-    flex: 1 0 20%;
-    padding: 16px;
+   //flex: 1 0 20%;
+    padding: 1.5%;
     background-color: #f9f9f9;
     text-align: right
 }

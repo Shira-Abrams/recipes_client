@@ -41,7 +41,7 @@
              #emailModel="ngModel"
              pattern="^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@gmail\.com$"
              required
-             [ngModel]="this.email"
+             [(ngModel)]="this.email"
              [ngClass]="{inputError: emailModel.errors&&(emailModel.touched)}"
             >
             <p *ngIf="emailModel.dirty && emailModel.getError('pattern')" class="errors">{{ 'הקש מייל תקין '}}</p>
@@ -53,7 +53,7 @@
             type="password" 
             ngModel
             #passwordModel="ngModel"
-            [ngModel]="this.password"
+            [(ngModel)]="this.password"
             required 
             minlength="8"
             maxlength="16"

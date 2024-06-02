@@ -12,7 +12,7 @@ export class RecipeServiceService {
   getAllRecipe(){
     return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getAllRecipes`)
   }
-  getRecipeById(id:String){
+  getRecipeById(id:String|undefined){
     return this.http.get<Recipes>(`${this.baseRecipsURl}/getRecipeByCode/${id}`)
   }
 
@@ -20,7 +20,7 @@ getRecipesByUSer(userId:string){
   return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByUser/${userId}`)
 }
 
-getRecByPTime(pt:number)
+getRecByPTime(pt:string)
 {
   return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByPreperationTime/${pt}`)
 }

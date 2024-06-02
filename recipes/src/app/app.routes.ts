@@ -5,6 +5,7 @@ import {AllRecipesComponent} from  './pages/all-recipes/all-recipes.component'
 import {RegisterComponent} from  './pages/register/register.component'
 import {CategoriesComponent} from './pages/categories/categories.component'
 import { NgModule } from '@angular/core';
+import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
 export const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch: 'full' },
   {path:'home',component:HomeComponent,pathMatch:'full'},
@@ -12,7 +13,8 @@ export const routes: Routes = [
   {path:'allRecipe',component:AllRecipesComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
+ {path:'recipeDeatail/:id',component:RecipeDetailComponent},
+]; 
 
-];
 
 // RouterModule.forRoot(routes)

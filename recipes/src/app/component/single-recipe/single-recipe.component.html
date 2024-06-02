@@ -1,11 +1,10 @@
 <div class="card">
-    <img src="../../../assets/mains-cat1.jpg" alt="Image">
+    <img src="{{url}}" alt="Image">
     <div class="card-text">
         <h2>{{this.recipe?.name}}</h2>
-        <p style="margin: 0;">משך ההכנה : {{this.recipe?.preperationTime}} דק'</p>
+        <p style="margin: 0;">משך ההכנה : {{this.recipe?.preperationTime |time }} </p>
         <div id="warpRank">
           <p>דרגת קושי :</p>
-          
             <div *ngFor="item of rnakArray ;let i=index" id="rank">
                 <img src="../../../assets/star.png" alt="">
            </div>

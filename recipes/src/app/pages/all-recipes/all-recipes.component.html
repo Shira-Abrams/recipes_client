@@ -1,10 +1,83 @@
-<div class="all-recipe">
-<div 
-class="single-recipe" 
-*ngFor="let item of this.recipes ; let i=index"
->
-<app-single-recipe [singleRecipe]="item"> </app-single-recipe>
-</div>
+    <main>
+        <header>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue">
+                <img src="../../../assets/search.png" alt="search icon" class="search-icon">
+            </div> 
+            <div id="filterIcon"  (click)="openFilter()" *ngIf="!isOpenFilter">
+                <img src="../../../assets/filter.png" alt="filter" >
+                <p> סינונים נוספים</p>
+            </div>
+            
+            <div id="filter" *ngIf="isOpenFilter">
+           
+             
+           
+                <div class="select-container">
+                    <select name="category selctor" class='styled-select' [(ngModel)]="this.selectedCategories" (change)="filterByCategory()"   >
+                       @for(item of allCategories;track item)
+                       {
+                             <option value="{{item._id}}" >{{item.description}}</option>
+                       }
+                    </select>
+                </div>
+
+                <div class="select-container">
+                    <select name="category selctor" class='styled-select' [(ngModel)]="this.timePrepertaion" (change)="filterBYTime()" >
+                       
+                       
+                             <option value="{{10}}" >{{'10 דק`'}}</option>
+                             <option value="{{15}}" >{{'15 דק`'}}</option>
+                             <option value="{{30}}" >{{'חצי שעה' }}</option>
+                             <option value="{{60}}" >{{'שעה'}}</option>
+                             <option value="{{61}}" >{{ 'שעה +'}}</option>
 
 
-</div>
+                      
+                    </select>
+                </div>
+
+                <div class="select-container">
+                    <select name="category selctor" class='styled-select' [(ngModel)]="this.rank" (change)="filterByRank()"[ariaPlaceholder]="'דרגת קושי'">
+                      
+                             <option value="{{1}}" >{{1}}</option>
+                             <option value="{{2}}" >{{2}}</option>
+
+                             <option value="{{3}}" >{{3}}</option>
+                             <option value="{{4}}" >{{4}}</option>
+                             <option value="{{5}}" >{{5}}</option>
+
+                      
+                    </select>
+                </div>
+                
+            </div>
+        </header>
+
+       
+       
+       
+        
+        <div class="all-recipe"  >
+            @for(item of this.recipes |searchPipes:searchaValue |paginPipes :(StartPage-1)*mountOfpage :StartPage*mountOfpage ; track item.name)
+            {
+                <div class="single-recipe" >
+                
+                <a  routerLink="/recipeDeatail/{{item._id}}" style="text-decoration: none ;color:black;">
+                <app-single-recipe [singleRecipe]="item" > </app-single-recipe>
+                </a>
+                </div>
+            
+            }
+            
+        </div>
+        
+        
+        <div id="buttons">
+            <button (click)="prevPage()" *ngIf="this.StartPage>1">עמוד קודם</button>
+            <button (click)="nextPage()" *ngIf="this.StartPage*mountOfpage<=this.recipes.length">עמוד הבא</button>
+
+        </div>
+
+    </main>
+    
