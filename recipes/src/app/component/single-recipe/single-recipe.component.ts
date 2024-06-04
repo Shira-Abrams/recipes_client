@@ -6,10 +6,13 @@ import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { TimestampProvider } from 'rxjs';
 import { TimePipe } from '../../shared/pipes/time.pipe';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-single-recipe',
   standalone: true,
-  imports: [NgFor,CommonModule,TimePipe],
+  imports: [NgFor,CommonModule,TimePipe,MatCardModule,MatButtonModule],
   templateUrl: './single-recipe.component.html',
   styleUrl: './single-recipe.component.scss'
 })
@@ -27,7 +30,9 @@ export class SingleRecipeComponent {
   console.log('ngOnInit',this.recipe);
   
     this.rnakArray=Array(this.recipe?.difficulty).fill(0);
-    this.url=this.recipe?.imagUrl||'https://www.hersheyland.com/content/dam/hersheyland/en-us/recipes/recipe-images/2_Hersheys_Perfectly_Chocolate_Cake_11-18.jpeg?im=Resize=(1920)'
+    this.url=this.recipe?.imagUrl||'https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
+    console.log('url=',this.url);
+    
  }
  
  

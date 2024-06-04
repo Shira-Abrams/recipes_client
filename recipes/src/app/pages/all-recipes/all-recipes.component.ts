@@ -17,10 +17,21 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CategorieServiceService } from '../../shared/services/categories/categorie-service.service';
 import { Categories } from '../../shared/models/categories';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-all-recipes',
   standalone: true,
-  imports: [NgFor,SingleRecipeComponent,NgStyle,CommonModule,RouterLink,FormsModule,SearchPipesPipe,PaginPipesPipe,MatInputModule,MatSelectModule,MatFormFieldModule],
+  imports: [NgFor,SingleRecipeComponent
+    ,NgStyle,CommonModule,
+    RouterLink,FormsModule,
+    SearchPipesPipe,PaginPipesPipe,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatCardModule
+  ],
   templateUrl: './all-recipes.component.html',
   styleUrl: './all-recipes.component.scss'
 })

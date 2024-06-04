@@ -32,16 +32,16 @@ export class RecipeDetailComponent implements OnInit{
       console.log('recipe id ==',this.id); 
    })
   //  console.log(this.activatedRoute.snapshot.params['id']);
-    
+  
     this.recipeServicer.getRecipeById(this.id).subscribe(recipe=>{
       this.currentRecipe=recipe
       console.log(this.currentRecipe);
-      this.imgeUrl=this.currentRecipe.imagUrl ||'https://cdn.pixabay.com/photo/2022/09/07/17/00/cook-7439182_640.jpg'
+      this.rnakArray=Array(this.currentRecipe?.difficulty).fill(0)
+      this.imgeUrl=this.currentRecipe?.imagUrl ||'https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
        console.log('imageURl',this.imgeUrl);
     })
     
-     this.rnakArray=Array(this.currentRecipe?.difficulty).fill(0)
-   
+     
       
   }
 

@@ -1,27 +1,29 @@
 .all-recipe {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     padding: 2%;
 }
 
 .single-recipe {
   // flex: 1 1 calc(33.33% - 40px); /* Responsive sizing for three cards per row */
+    height: 50vh;
     width: 30%;
     box-sizing: border-box;
     margin: 1.2%;
 }
 @media (max-width: 900px) {
     .single-recipe {
+      height:50vw;
         width: 47%;
         box-sizing: border-box;
         margin: 1.2%;
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 650px) {
     .single-recipe {
       //  flex: 1 1 100%; /* Full width on small screens */
+        height: 60vw;
          max-width: none;
          width: 100%;
          box-sizing: border-box;

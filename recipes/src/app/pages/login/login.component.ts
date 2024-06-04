@@ -66,11 +66,11 @@ login(form:NgForm){
     
    console.log('password= ',form.value.password);
    console.log('email= ', form.value.email);
-  
+   
    this.userServices.login(form.value.email,form.value.password).subscribe(data=>{
     this.userServices.currentUser=data.user;
     this.userServices.token=data.token;
-    console.log(data);  
+    console.log('data',data);  
     console.log('userService=',this.userServices.currentUser,'tokenService =',this.userServices.token);
     this.router.navigateByUrl('/home');
    },

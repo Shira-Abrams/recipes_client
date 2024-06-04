@@ -1,6 +1,5 @@
-<main style="height: 100%; width: 100%;">
-    <div  *ngIf="this.currentRecipe?.imagUrl"    [ngStyle]="{'background-image' :'url('+ imgeUrl +')'}" class="recipicture"></div>
-    <div  *ngIf="!this.currentRecipe?.imagUrl"   style="background-image: url('https://cdn.pixabay.com/photo/2022/09/07/17/00/cook-7439182_640.jpg');" class="recipicture"></div>
+<main style="width: 100%;">
+    <div    style="background-image: url('{{imgeUrl}}');"  class="recipicture"></div>
     <h1 id="name">{{currentRecipe?.name}}</h1>
    
          <mat-divider></mat-divider> 
@@ -8,12 +7,12 @@
            
 
             <div class="category-container"> 
-             <p>קטגוריות :  </p>
-             <div *ngFor="let item of currentRecipe?.categories"  let i="index">{{item}} ,</div>
+             <p>קטגוריות :</p>
+             <div *ngFor="let item of currentRecipe?.categories"  let i="index">{{item}},</div>
             </div>
             
             <div id="rank-container"> 
-                <p>דרגת קושי</p>
+                <p>דרגת קושי   : </p>
                  <div *ngFor="item of rnakArray;let i=index" id="rank" > 
                     <img src="../../../assets/star.png" alt="rankstar">
                 </div>
@@ -21,10 +20,21 @@
             </div>
          </div>
          <mat-divider></mat-divider> 
-         <div>
-           <p></p>
 
-
+         <div class="recipe-ingridinet">
+            <h2>מצרכים </h2>
+            <div *ngFor="let item of currentRecipe?.layersArray; let i=index">
+              <h2>{{item.description}}</h2>
+              <div *ngFor="let ingridient of item.ingredients" class="ingridient-list">
+                 
+                   <img src="https://cdn-icons-png.flaticon.com/128/3686/3686629.png" alt="spoon" class="spoon">
+                    <p>{{ingridient}}</p>
+              </div>
+            </div>
+             
+            <h2>הוראות הכנה</h2>
+            <p>{{currentRecipe?.preperationInstruction}}</p>
+             
          </div>
 
 </main>

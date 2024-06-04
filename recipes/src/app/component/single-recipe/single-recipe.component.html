@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
     <img src="{{url}}" alt="Image">
     <div class="card-text">
         <h2>{{this.recipe?.name}}</h2>
@@ -12,4 +12,26 @@
 
         </div>
     </div>
-</div>
+</div> -->
+
+<mat-card class="example-card">
+   <!-- <div class="card-image">
+     <img src="{{url}}" alt="">
+   </div> -->
+   <!-- [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" -->
+  <div  style="background-image: url('{{url}}');"  class="divimg"> </div>
+ 
+    <div class="text-era">
+        <h2>{{this.recipe?.name}}</h2>
+        <p style="margin: 0;">משך ההכנה : {{this.recipe?.preperationTime |time }} </p>
+        <div id="warpRank">
+          <p>דרגת קושי :</p>
+            <div *ngFor="let item of rnakArray ;let i=index" id="rank">
+                <img src="../../../assets/star.png" alt="">
+           </div>
+          
+
+        </div>
+    </div>
+
+</mat-card>

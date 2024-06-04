@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject ,OnInit} from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Routes ,RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './nav-bar.component.scss'
 })
 
-export class NavBarComponent {
+export class NavBarComponent implements OnInit{
   constructor( public  userService:UserServiceService,public router:Router) {
     
   }
@@ -35,7 +35,21 @@ export class NavBarComponent {
     this.openProfile=true;
   }
   shortUserName()
-  {
+  { 
+    console.log(this.userService.currentUser?.username?.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase());
+    
    return this.userService.currentUser?.username?.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase()
+  }
+  ngOnInit() {
+     if(this.userService.token)
+      {
+        if(this.userService.isTokenExpired())
+         {
+           this.userService.token=null;
+          this.userService.currentUser=null;
+         }
+      }
+    
+      
   }
 }

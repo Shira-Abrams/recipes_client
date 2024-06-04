@@ -9,8 +9,8 @@
 }
 
 .card img {
-    width: 100%;
-    height: 100%;
+    width:100%;
+    height:100%;
     object-fit: cover;
 }
 
@@ -29,10 +29,39 @@ h2{
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 30%;
 }
 #rank{
     display: flex;
     flex-direction: row;
-    width: 3%;
-    height: 3%;
+    width: 2.3vh;
+    height: 60%;
 }
+.example-card {
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  .example-card:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+  }
+ 
+  .card-image{
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+ 
+  .divimg{
+    height:70%;
+    background-size: cover;
+    background-position: center;
+  }
+  .text-era{
+    padding: 2%;
+    height: 20%;
+  }
