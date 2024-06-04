@@ -9,10 +9,11 @@ import { TimePipe } from '../../shared/pipes/time.pipe';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { NgStyle } from '@angular/common';
+import { ForDirectiveDirective } from '../../shared/directives/for-directive.directive';
 @Component({
   selector: 'app-single-recipe',
   standalone: true,
-  imports: [NgFor,CommonModule,TimePipe,MatCardModule,MatButtonModule],
+  imports: [NgFor,CommonModule,TimePipe,MatCardModule,MatButtonModule,ForDirectiveDirective],
   templateUrl: './single-recipe.component.html',
   styleUrl: './single-recipe.component.scss'
 })
