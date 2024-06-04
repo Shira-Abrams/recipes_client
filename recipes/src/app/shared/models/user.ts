@@ -3,5 +3,6 @@ export interface User {
     password?:string,
     email?:String,
     addres?:String,
-    role?:String
+    role?:String,
+    _id:string
 }

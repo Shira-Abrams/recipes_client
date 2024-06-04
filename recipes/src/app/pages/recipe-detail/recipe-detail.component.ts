@@ -7,6 +7,8 @@ import {MatListModule} from '@angular/material/list';
 import { NgFor } from '@angular/common';
 import { NgStyle } from '@angular/common';
 import { NgIf } from '@angular/common';
+import { UserServiceService } from '../../shared/services/user/user-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
@@ -15,12 +17,13 @@ import { NgIf } from '@angular/common';
   styleUrl: './recipe-detail.component.scss'
 })
 export class RecipeDetailComponent implements OnInit{
+
    currentRecipe?:Recipes;
    id?:string
    imgeUrl:string=''
    rnakArray:number[]=[]
-   
-  constructor(private recipeServicer:RecipeServiceService,private activatedRoute:ActivatedRoute) {
+   userId?:string
+  constructor(private recipeServicer:RecipeServiceService,private activatedRoute:ActivatedRoute,private userService:UserServiceService ,private router:Router) {
 
     
   }
@@ -40,9 +43,14 @@ export class RecipeDetailComponent implements OnInit{
       this.imgeUrl=this.currentRecipe?.imagUrl ||'https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
        console.log('imageURl',this.imgeUrl);
     })
-    
+    this.userId=this.userService.currentUser.id;
+     console.log('useId=',this.userService.currentUser);
      
       
   }
 
+  deleteRecipe() {
+     this.recipeServicer.deleteRecipe(String(this.currentRecipe?._id))
+     this.router.navigateByUrl('/allRecipe')
+  }
 }

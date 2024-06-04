@@ -67,7 +67,7 @@ export class RegisterComponent {
        this.Uservice.signup(form.value) .subscribe(user=>{
        console.log('user signup seccesfuly user =',user);
        this.Uservice.token=user.token
-       this.Uservice.currentUser=user.user;
+       this.Uservice.currentUser={username:user.user.username,id:user.user._id};
        console.log('userService=',this.Uservice.currentUser,'tokenService =',this.Uservice.token);
        this.router.navigateByUrl('allRecipe');
        })    

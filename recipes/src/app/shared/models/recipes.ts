@@ -1,3 +1,5 @@
+import { User } from "./user"
+
 export interface Recipes {
     name:string,
     description?:string,
@@ -9,6 +11,6 @@ export interface Recipes {
     preperationInstruction:string,
     imagUrl:string,
     isPrivate:boolean,
-    user:any 
+    user:User 
     _id:string
 }

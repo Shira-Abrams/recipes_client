@@ -1,7 +1,7 @@
 <main>
     <header>
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue">
+            <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue"  >
             <img src="../../../assets/search.png" alt="search icon" class="search-icon">
         </div> 
         <div id="filterIcon"  (click)="openFilter()" *ngIf="!isOpenFilter">
@@ -59,7 +59,7 @@
    
     
     <div class="all-recipe"  >
-        @for(item of this.recipes |searchPipes:searchaValue |paginPipes :(StartPage-1)*mountOfpage :StartPage*mountOfpage ; track item.name)
+        @for(item of this.recipes |searchPipes :searchaValue |paginPipes :(StartPage-1)*mountOfpage :StartPage*mountOfpage ; track item.name)
         {
             <div class="single-recipe" >
             

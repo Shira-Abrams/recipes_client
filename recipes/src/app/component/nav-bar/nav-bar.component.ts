@@ -22,7 +22,7 @@ export class NavBarComponent implements OnInit{
   LogOut()
   {
     console.log('at log out');
-   this.userService.token=null;
+   this.userService.token='';
    this.userService.currentUser=null;
     console.log('user after logout= ',this.userService.currentUser);
     console.log('token after logout= ',this.userService.token);
@@ -36,17 +36,17 @@ export class NavBarComponent implements OnInit{
   }
   shortUserName()
   { 
-    console.log(this.userService.currentUser?.username?.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase());
+    console.log(String(this.userService.currentUser?.username).split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase());
     
-   return this.userService.currentUser?.username?.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase()
+   return String(this.userService.currentUser?.username).split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase()
   }
   ngOnInit() {
      if(this.userService.token)
       {
         if(this.userService.isTokenExpired())
          {
-           this.userService.token=null;
-          this.userService.currentUser=null;
+           this.userService.token='';
+          this.userService.currentUser='';
          }
       }
     

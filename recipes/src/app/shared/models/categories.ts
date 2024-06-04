@@ -2,7 +2,7 @@ import { Recipes } from "./recipes";
 
 export interface Categories {
     description:string,
-    recipes:Recipes[],
+    recipes:any[],
      _id:number,
  
 }

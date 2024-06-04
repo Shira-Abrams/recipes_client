@@ -5,9 +5,8 @@ import { routes } from './app.routes';
 import { Routes ,RouterModule} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
-
+import { authInterceptor } from './shared/interceptors/auth.interceptor';
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient()],
+  providers: [provideRouter(routes),provideHttpClient(withInterceptors([authInterceptor]))],
   
 };

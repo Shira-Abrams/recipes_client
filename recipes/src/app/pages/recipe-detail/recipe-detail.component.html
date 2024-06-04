@@ -22,6 +22,8 @@
          <mat-divider></mat-divider> 
 
          <div class="recipe-ingridinet">
+            <div id="trahs-warp" *ngIf="this.currentRecipe?.user?._id==userId">  <img src="../../../assets/trash.png" alt="trash"  id="trash" (click)="deleteRecipe()"></div>
+
             <h2>מצרכים </h2>
             <div *ngFor="let item of currentRecipe?.layersArray; let i=index">
               <h2>{{item.description}}</h2>

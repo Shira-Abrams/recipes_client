@@ -68,7 +68,7 @@ login(form:NgForm){
    console.log('email= ', form.value.email);
    
    this.userServices.login(form.value.email,form.value.password).subscribe(data=>{
-    this.userServices.currentUser=data.user;
+    this.userServices.currentUser={username:data.user.username,id:data.user._id};
     this.userServices.token=data.token;
     console.log('data',data);  
     console.log('userService=',this.userServices.currentUser,'tokenService =',this.userServices.token);

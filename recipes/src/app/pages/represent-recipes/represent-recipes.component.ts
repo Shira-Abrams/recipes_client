@@ -36,6 +36,7 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './represent-recipes.component.scss'
 })
 export class RepresentRecipesComponent {
+
   searchaValue=''
   timePrepertaion=0;
   rank=1
@@ -46,7 +47,7 @@ export class RepresentRecipesComponent {
   temRecipes:Recipes[]=[];
   allCategories:Categories[]=[]
 
-  selectedCategories='סננ לפי קטגוריה'
+  selectedCategories='סנן לפי קטגוריה'
   isOpenFilter=false
  constructor(private recipeService:RecipeServiceService,router:Router,private categoriesServices:CategorieServiceService ) {
    
@@ -69,21 +70,6 @@ export class RepresentRecipesComponent {
       this.StartPage--;
  }
 
- // isHasCategory(categorie:any[])
- // { 
- //   console.log('at isHasCategore the categories array is =',categorie);
-   
- //   let isExistCategory=false;
- //   for (let category of categorie) {
- //     console.log(category,'=',this.selectedCategories);
-      
- //     if(category==-this.selectedCategories)
- //     isExistCategory=true
- //   }
- //   console.log( 'is exsit category ',isExistCategory);
-   
- //  return isExistCategory
- // }
  filterByCategory()
  {   
      console.log('at filterByCategory');
@@ -92,10 +78,11 @@ export class RepresentRecipesComponent {
       console.log(this.recipes);
       console.log('--------------------------');
          this.categoriesServices.getCategoriesByIdAndRecipe(this.selectedCategories).subscribe(data=>{
-           console.log('dada= ',data);
+           console.log('filter by category= ',data.recipes);
            this.recipes=data.recipes; 
            console.log(this.recipes);
          })
+      
        
  
  }
@@ -108,14 +95,16 @@ export class RepresentRecipesComponent {
  { 
    console.log('at filterBYTime time is = ' ,this.timePrepertaion);
    
-   this.recipes=  this.temRecipes.filter(x=>x.preperationTime==this.timePrepertaion)
+   this.recipes=  this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
  }
  filterByRank()
  {     
    console.log('at filterByRank the rank is :' ,this.rank);
    
-     this.recipes=   this.temRecipes.filter(x=>x.difficulty==this.rank)
+     this.recipes=  this.recipes.filter(x=>x.difficulty==this.rank)
  }
+
+ 
  
 }
 
