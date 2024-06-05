@@ -17,7 +17,7 @@ export const routes: Routes = [
   {path:'login',component:LoginComponent},
  {path:'recipeDeatail/:id',component:RecipeDetailComponent},
  {path:'userRecipes/:userId',component:UserRecipesComponent,canActivate:[authGuard]},
- {path:'addRecipe/',component:RecipeFormComponent,canActivate:[authGuard]},
+ {path:'addRecipe',component:RecipeFormComponent,canActivate:[authGuard]},
 
 
 

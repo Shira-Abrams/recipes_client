@@ -1,1 +1,74 @@
-<p>recipe-form works!</p>
+<form   [formGroup]="addRecipeForm">
+
+    <div>
+        <input id="name" formControlName="name" />
+        <p> {{addRecipeForm.controls['name'].errors}}</p>
+
+     </div>
+
+
+     <div>
+        <input type="text"  formControlName="description">
+        <p> {{addRecipeForm.controls['description'].errors}}</p>
+
+    </div>
+
+ <div  formArrayName="categories"  style=" border: 2px solid black;">
+ 
+    <div *ngFor="let category of    categories.controls; let i=index" >
+     <input type="text"  [formControlName]="i">
+     <p> {{addRecipeForm.get('categories.'+i)?.errors}}</p>
+    </div>
+     <button  (click)="addCategory()">להוספת קטגוריה</button>
+     <button *ngIf="this.categories.length>1" (click)="removeCategory()"> קטגוריה</button>
+
+ </div>
+
+ <div>
+    <input type="number"  formControlName="difficulty" >
+    <p>{{addRecipeForm.controls['difficulty'].errors}}</p>
+ </div>
+
+ 
+
+
+<div  formArrayName="layersArray"  style="border:  2px solid black;">
+
+<div *ngFor="let layer of layersArray.controls;let i=index"  [formGroupName]="i">
+     <div>
+            <input type="text"  formControlName="description">
+            <p>{{addRecipeForm.get('layersArray')?.get('description')?.errors}}</p>
+     </div>
+
+     <div formArrayName="ingredients">
+     <div  *ngFor="let ingridient of ingredients.controls ;let j=index"  style="border:  2px solid black;" >
+     <div> <input type="" [formControlName]="j"></div>
+    </div>   
+    <button (click)="addIngridiet()">הוספת מוצר</button>
+    </div>
+ 
+   
+
+
+   
+     
+</div>
+ <button  (click)="addLyers()">הוספת שכבה</button>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+ <div>
+    <input type="number"  formControlName="difficulty" >
+    <p>{{addRecipeForm.controls['difficulty'].errors}}</p>
+ </div>
+
+ 
+</form>

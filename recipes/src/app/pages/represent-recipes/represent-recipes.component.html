@@ -4,7 +4,7 @@
             <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue"  >
             <img src="../../../assets/search.png" alt="search icon" class="search-icon">
         </div> 
-        <div id="filterIcon"  (click)="openFilter()" *ngIf="!isOpenFilter">
+        <div id="filterIcon"   *ngIf="!isOpenFilter">
             <img src="../../../assets/filter.png" alt="filter" >
             <p> סינונים נוספים</p>
         </div>

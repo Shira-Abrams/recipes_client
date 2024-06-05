@@ -23,6 +23,8 @@ export class AllRecipesComponent {
   constructor(private recipeService:RecipeServiceService,router:Router ) {
     recipeService.getAllRecipe().subscribe(data=>{
       this.recipes=data
+       console.log('data in all recipes',data);
+       
     })
    
   }

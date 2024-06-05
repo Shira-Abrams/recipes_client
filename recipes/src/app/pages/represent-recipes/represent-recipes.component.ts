@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, input } from '@angular/core';
+import { Component, EventEmitter, Input, Output ,OnInit} from '@angular/core';
 import { RecipeServiceService } from '../../shared/services/recipes/recipe-service.service';
 import { Recipes } from '../../shared/models/recipes';
 import { NgFor, NgStyle } from '@angular/common';
@@ -35,7 +35,7 @@ import {MatCardModule} from '@angular/material/card';
   templateUrl: './represent-recipes.component.html',
   styleUrl: './represent-recipes.component.scss'
 })
-export class RepresentRecipesComponent {
+export class RepresentRecipesComponent implements OnInit{
 
   searchaValue=''
   timePrepertaion=0;
@@ -44,6 +44,7 @@ export class RepresentRecipesComponent {
   mountOfpage:number=3;
   @Input()
   recipes:Recipes[]=[];
+  
   temRecipes:Recipes[]=[];
   allCategories:Categories[]=[]
 
@@ -51,15 +52,15 @@ export class RepresentRecipesComponent {
   isOpenFilter=false
  constructor(private recipeService:RecipeServiceService,router:Router,private categoriesServices:CategorieServiceService ) {
    
-   categoriesServices.getAllCategories().subscribe(data=>{
-           console.log('categories=',data);
-           this.allCategories=data;
+  //  categoriesServices.getAllCategories().subscribe(data=>{
+  //          console.log('categories=',data);
+  //          this.allCategories=data;
            
-   })
+  //  })
+
  }
- filterRecipe(value:string){
-   this.recipes.filter(x=>x.name.includes(value));
- }
+  
+
  nextPage(){
     if(this.StartPage*this.mountOfpage<=this.recipes.length)
      this.StartPage++;
@@ -82,13 +83,8 @@ export class RepresentRecipesComponent {
            this.recipes=data.recipes; 
            console.log(this.recipes);
          })
-      
-       
+
  
- }
- openFilter()
- {
-   this.isOpenFilter=!this.isOpenFilter
  }
 
  filterBYTime()
@@ -105,6 +101,9 @@ export class RepresentRecipesComponent {
  }
 
  
- 
+ ngOnInit(): void {
+  console.log('at represent recipe the the recipe is ',this.recipes);
+  
+}
 }
 

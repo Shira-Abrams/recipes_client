@@ -10,7 +10,7 @@
             <a routerLink="/allRecipe" routerLinkActive="router-link-active" >לכל המתכונים</a>
             @if(userService.token){
                     <a routerLink="userRecipes/{{this.userService.currentUser?.id}}">ספר המתכונים שלי</a>   
-                    <a href="">העלאת מתכון</a>           
+                    <a routerLink="addRecipe">העלאת מתכון</a>           
                  }
 
                  
