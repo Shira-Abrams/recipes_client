@@ -10,8 +10,6 @@ import { RouterLink } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import { SearchPipesPipe } from '../../shared/pipes/search-pipes.pipe';
-import { PaginPipesPipe } from '../../shared/pipes/pagin-pipes.pipe';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,27 +17,29 @@ import { CategorieServiceService } from '../../shared/services/categories/catego
 import { Categories } from '../../shared/models/categories';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { RankFilterPipe } from '../../shared/pipes/rank-filter.pipe';
 @Component({
   selector: 'app-represent-recipes',
   standalone: true,
   imports: [NgFor,SingleRecipeComponent
     ,NgStyle,CommonModule,
     RouterLink,FormsModule,
-    SearchPipesPipe,PaginPipesPipe,
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    RankFilterPipe
   ],
   templateUrl: './represent-recipes.component.html',
   styleUrl: './represent-recipes.component.scss'
 })
 export class RepresentRecipesComponent implements OnInit{
 
+
   searchaValue=''
   timePrepertaion=0;
-  rank=1
+  rank=0
   StartPage:number=1
   mountOfpage:number=3;
   @Input()
@@ -48,39 +48,97 @@ export class RepresentRecipesComponent implements OnInit{
   temRecipes:Recipes[]=[];
   allCategories:Categories[]=[]
 
-  selectedCategories='סנן לפי קטגוריה'
+  selectedCategories=''
   isOpenFilter=false
  constructor(private recipeService:RecipeServiceService,router:Router,private categoriesServices:CategorieServiceService ) {
    
-  //  categoriesServices.getAllCategories().subscribe(data=>{
-  //          console.log('categories=',data);
-  //          this.allCategories=data;
+   categoriesServices.getAllCategories().subscribe(data=>{
+           console.log('categories=',data);
+           this.allCategories=data;
            
-  //  })
+   })
+   this.temRecipes=[...this.recipes];
 
  }
   
-
+//  isHasNex()
+//  { 
+//   this.recipeService.pagin(this.StartPage+1, this.mountOfpage,this.searchaValue).subscribe(data=>{
+//      if(data.length!=0)
+//       this.StartPage++
+//  })
+//  }
  nextPage(){
-    if(this.StartPage*this.mountOfpage<=this.recipes.length)
-     this.StartPage++;
+       this.StartPage++;
+    if(this.selectedCategories=='')
+      {  
+        this.recipeService.pagin(this.StartPage, this.mountOfpage,this.searchaValue).subscribe(data=>{
+             this.recipes=data;
+             console.log('prevPage= ',data);
+             if(this.rank!=0&&this.timePrepertaion!=0)
+              this.recipes=this.recipes.filter(x=>x.difficulty==this.rank&&x.preperationTime==this.timePrepertaion)
+           else{
+             if(this.rank!=0)
+               this.recipes=this.recipes.filter(x=>x.difficulty==this.rank)
+             else{
+               if(this.timePrepertaion!=0)
+                 this.recipes=this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
+
+             }
+            }
+             
+          })
+      }
+      else{
+        
+          this.recipes.slice((this.StartPage-1)*this.mountOfpage,this.mountOfpage)
+      }
+    
+    
  }
+ 
+ 
  prevPage()
  {
     if(this.StartPage>1)
       this.StartPage--;
+    if(this.selectedCategories=='')
+      {
+        this.recipeService.pagin(this.StartPage, this.mountOfpage,this.searchaValue).subscribe(data=>{
+             this.recipes=data;
+              if(this.rank!=0&&this.timePrepertaion!=0)
+                 this.recipes=this.recipes.filter(x=>x.difficulty==this.rank&&x.preperationTime==this.timePrepertaion)
+              else{
+                if(this.rank!=0)
+                  this.recipes=this.recipes.filter(x=>x.difficulty==this.rank)
+                else{
+                  if(this.timePrepertaion!=0)
+                    this.recipes=this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
+
+                }
+
+              }
+             console.log('prevPage= ',data);
+             
+            })
+      }
+      else{
+          this.recipes.slice((this.StartPage-1)*this.mountOfpage,this.mountOfpage)
+      }
+      
  }
 
  filterByCategory()
  {   
      console.log('at filterByCategory');
      console.log('the value is :',this.selectedCategories);
-     
+       this.StartPage=1
       console.log(this.recipes);
       console.log('--------------------------');
          this.categoriesServices.getCategoriesByIdAndRecipe(this.selectedCategories).subscribe(data=>{
            console.log('filter by category= ',data.recipes);
            this.recipes=data.recipes; 
+           this.temRecipes=data.recipes
            console.log(this.recipes);
          })
 
@@ -88,22 +146,59 @@ export class RepresentRecipesComponent implements OnInit{
  }
 
  filterBYTime()
- { 
-   console.log('at filterBYTime time is = ' ,this.timePrepertaion);
-   
-   this.recipes=  this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
+ {  
+  console.log('temp recipes in  filterBYTime is=',this.temRecipes);
+  
+  this.StartPage=1
+  console.log('preaperation time =',this.timePrepertaion,'rank =',this.rank);
+  
+   if(this.rank==0)
+    {
+         this.recipes=  this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
+         console.log('at filter time rank =',this.rank);
+        
+    }
+   else
+   {
+    this.recipes=this.temRecipes.filter(x=>x.preperationTime==this.timePrepertaion&&this.rank==x.difficulty)
+    console.log('at this preaprtion time =',this.recipes);
+   }
+
+    
  }
  filterByRank()
  {     
+    this.StartPage=1
    console.log('at filterByRank the rank is :' ,this.rank);
-   
-     this.recipes=  this.recipes.filter(x=>x.difficulty==this.rank)
+    if(this.timePrepertaion==0)
+      {
+          this.recipes=  this.recipes.filter(x=>x.difficulty==this.rank)
+          console.log();
+          
+
+      }
+     else{
+       this.recipes=this.recipes.filter(x=>x.difficulty==this.rank&&x.preperationTime==this.timePrepertaion)
+     }
  }
 
  
- ngOnInit(): void {
+ ngOnInit() {
   console.log('at represent recipe the the recipe is ',this.recipes);
+  this.temRecipes=[...this.recipes];
+    console.log('at represent recipe the the temp-recipe  is ',this.temRecipes);
+  
   
 }
+
+filterBySearch() { 
+     this.StartPage=1;
+
+    this.recipeService.getRecipeBySearch(this.searchaValue).subscribe(data=>{
+      this.recipes=data;
+    })
+  }
+
+ 
 }
 

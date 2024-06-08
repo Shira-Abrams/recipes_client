@@ -13,13 +13,19 @@ export class RecipeServiceService {
   private baseRecipsURl='http://localhost:5000/recipes'
   // private recipesUser$:BehaviorSubject<Recipes[]>=new BehaviorSubject<Recipes[]>([]);
   private userRecipe:Recipes[]=[];
-
+  private filteredRecipes:Recipes[]=[]
   constructor(private router:Router) { 
      
   }
   getAllRecipe(){
     return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getAllRecipes`)
   }
+ getRecipeBySearch(searchValue:string)
+ {
+   return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getAllRecipes?search=${searchValue}`)
+     
+    
+ }
   getRecipeById(id:String|undefined){
     return this.http.get<Recipes>(`${this.baseRecipsURl}/getRecipeByCode/${id}`)
   }
@@ -50,4 +56,15 @@ deleteRecipe(id:string){
   })
   this.router.navigateByUrl('')
 }
+
+ pagin(startPage:number,mountPage:number,searchValue:string)
+ {
+    return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getAllRecipes?perPage=${mountPage}&page=${startPage}&search=${searchValue}`)
+ }
+ public get filtered_recipe()  {
+  return this.filteredRecipes
+ }
+ 
 }
+
+

@@ -22,7 +22,7 @@
      <button  (click)="addCategory()">להוספת קטגוריה</button>
      <button *ngIf="this.categories.length>1" (click)="removeCategory()"> קטגוריה</button>
 
- </div>
+    </div>
 
  <div>
     <input type="number"  formControlName="difficulty" >
@@ -32,43 +32,46 @@
  
 
 
-<div  formArrayName="layersArray"  style="border:  2px solid black;">
+<div  formArrayName="layersArray"  >
 
-<div *ngFor="let layer of layersArray.controls;let i=index"  [formGroupName]="i">
+<div *ngFor="let layer of layersArray.controls;let i=index"  [formGroupName]="i" style="border:  2px solid green;margin:  3%;">
      <div>
             <input type="text"  formControlName="description">
             <p>{{addRecipeForm.get('layersArray')?.get('description')?.errors}}</p>
+           
      </div>
 
-     <div formArrayName="ingredients">
-     <div  *ngFor="let ingridient of ingredients.controls ;let j=index"  style="border:  2px solid black;" >
+     <div formArrayName="ingredients"  style="border:  2px solid red;">
+     <div  *ngFor="let ingridient of ingredients(i).controls ;let j=index"   >
      <div> <input type="" [formControlName]="j"></div>
     </div>   
-    <button (click)="addIngridiet()">הוספת מוצר</button>
+    <button (click)="addIngridiet(i)">הוספת מוצר</button>
+    <button *ngIf="this.ingredients(i).length>1" (click)="removeIngridiet(i)">הסרת מוצר</button>
+
     </div>
- 
-   
 
-
-   
-     
 </div>
  <button  (click)="addLyers()">הוספת שכבה</button>
+ <button  *ngIf="this.layersArray.length>1"  (click)="removeLyers()">הסרת שכבה</button>
+
 </div>
 
-
-
-
-
-
-
-
-
- 
  <div>
-    <input type="number"  formControlName="difficulty" >
-    <p>{{addRecipeForm.controls['difficulty'].errors}}</p>
+    <input type=""  formControlName="preperationInstruction" >
+    <p>{{addRecipeForm.controls['preperationInstruction'].errors}}</p>
  </div>
+
+ <div>
+   <input type="file"  formControlName="imagUrl" (change)="onFileSelected($event)" accept="image/*">
+   <div *ngIf="imgSrc">
+   <img [src]="imgSrc" alt="">
+   </div>
+</div>
+
+<div>
+   <input type=""  formControlName="isPrivate" >
+   <p>{{addRecipeForm.controls['isPrivate'].errors}}</p>
+</div>
 
  
 </form>

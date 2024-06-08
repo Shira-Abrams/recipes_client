@@ -24,7 +24,7 @@ export class AllRecipesComponent {
     recipeService.getAllRecipe().subscribe(data=>{
       this.recipes=data
        console.log('data in all recipes',data);
-       
+        
     })
    
   }

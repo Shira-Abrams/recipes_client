@@ -31,7 +31,13 @@ export class SingleRecipeComponent {
   console.log('ngOnInit',this.recipe);
   
     this.rnakArray=Array(this.recipe?.difficulty).fill(0);
-    this.url=this.recipe?.imagUrl||'https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
+    if(!this.recipe?.imagUrl)
+    this.url='https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
+    else{
+      this.url=`http://localhost:5000/images/${this.recipe?.imagUrl}`
+    }
+    console.log(this.url);
+    
     console.log('url=',this.url);
     
  }

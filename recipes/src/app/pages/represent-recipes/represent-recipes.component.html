@@ -1,15 +1,15 @@
 <main>
     <header>
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue"  >
+            <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue" (input)="filterBySearch()">
             <img src="../../../assets/search.png" alt="search icon" class="search-icon">
         </div> 
         <div id="filterIcon"   *ngIf="!isOpenFilter">
-            <img src="../../../assets/filter.png" alt="filter" >
+            <img src="../../../assets/filter.png" alt="filter" (click)="isOpenFilter=!isOpenFilter">
             <p> סינונים נוספים</p>
         </div>
         
-        <div id="filter" *ngIf="isOpenFilter">
+        <div id="filter" *ngIf="isOpenFilter" >
        
          
        
@@ -38,7 +38,7 @@
             </div>
 
             <div class="select-container">
-                <select name="category selctor" class='styled-select' [(ngModel)]="this.rank" (change)="filterByRank()"[ariaPlaceholder]="'דרגת קושי'">
+                <select name="category selctor" class='styled-select' [(ngModel)]="this.rank"  (change)="filterByRank()" [ariaPlaceholder]="'דרגת קושי'">
                   
                          <option value="{{1}}" >{{1}}</option>
                          <option value="{{2}}" >{{2}}</option>
@@ -50,7 +50,7 @@
                   
                 </select>
             </div>
-            
+              
         </div>
     </header>
 
@@ -58,8 +58,8 @@
    
    
     
-    <div class="all-recipe"  >
-        @for(item of this.recipes |searchPipes :searchaValue |paginPipes :(StartPage-1)*mountOfpage :StartPage*mountOfpage ; track item.name)
+    <div class="all-recipe" *ngIf="this.recipes.length!=0" >
+        @for(item of recipes  ; track item.name)
         {
             <div class="single-recipe" >
             
@@ -75,8 +75,11 @@
     
     <div id="buttons">
         <button (click)="prevPage()" *ngIf="this.StartPage>1">עמוד קודם</button>
-        <button (click)="nextPage()" *ngIf="this.StartPage*mountOfpage<=this.recipes.length">עמוד הבא</button>
+        <button (click)="nextPage()" *ngIf="(this.selectedCategories!=''&&this.recipes.length>=(this.StartPage+1)*mountOfpage)||(this.selectedCategories==''&&this.recipes.length>=mountOfpage)">עמוד הבא</button>
 
     </div>
-
+  
 </main>
+<div style="height: 100%;" *ngIf="this.recipes.length==0">
+    <p> לא נמצאו מתוכנים העונים לתנאי הסינון  </p>
+  </div>

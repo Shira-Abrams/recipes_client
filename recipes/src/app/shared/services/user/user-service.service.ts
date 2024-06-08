@@ -73,9 +73,8 @@ public get loginer() : any {
 public isTokenExpired()
 {  
    const expiry = (JSON.parse(atob(String(this.token).split('.')[1]))).exp;
-  // return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   console.log('is token expired =', (Math.floor((new Date).getTime()/1000))>=expiry);
-  
+
   return (Math.floor((new Date).getTime()/1000))>=expiry
 }
 
