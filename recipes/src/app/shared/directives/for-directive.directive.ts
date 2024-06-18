@@ -1,35 +1,36 @@
-import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef ,Renderer2 ,OnChanges, SimpleChanges} from '@angular/core';
 import { OnInit } from '@angular/core';
 @Directive({
   selector: '[appForDirective]',
   standalone: true
 })
-export class ForDirectiveDirective implements OnInit{
+
+export class ForDirectiveDirective implements OnChanges{
    
   @Input()
-  public set value(n : number) {
-     this.count=n;
-  }
-  private count:number=5;
+    appForDirective:number|undefined;
   
-  constructor(private element:ElementRef) {
-      console.log('directive count ',this.count);
       
+   constructor(private render: Renderer2, private viewContaine: ViewContainerRef) {}
+  ngOnChanges(cahnge:SimpleChanges) {
+    if(cahnge['appForDirective'])
+      this.duplicateRank();
   }
- 
- 
+  duplicateRank() {
 
- ngOnInit(): void {
-  console.log(this.element);
- console.log(this.count);
- 
-  let img=document.createElement('img')
-  img.src="../../../assets/star.png"
-  console.log('at for  directive');
-  for (let index = 0; index < 5; index++) {
-    this.element.nativeElement.appendChild(img)
+   this.appForDirective=this.appForDirective||0;
+   console.log('count=',this.appForDirective);
+   this.viewContaine.clear();
+   for (let index = 0; index < this?.appForDirective; index++) {
+    const rank=this.render.createElement('img');
+    this.render.setAttribute(rank,'src','../../../assets/star.png')
+    this.render.appendChild(this.viewContaine.element.nativeElement,rank);
   }
-}
+
+
+  
+     
+ }
 
 
 

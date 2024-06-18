@@ -20,8 +20,6 @@ import { ForDirectiveDirective } from '../../shared/directives/for-directive.dir
 export class SingleRecipeComponent {
   @Input('singleRecipe')
  recipe:Recipes|undefined=undefined;
-  rank=this.recipe?.difficulty
-  rnakArray:number[]= []
   url:string='';
  constructor() {
   console.log(this.recipe);
@@ -30,7 +28,6 @@ export class SingleRecipeComponent {
  ngOnInit(){
   console.log('ngOnInit',this.recipe);
   
-    this.rnakArray=Array(this.recipe?.difficulty).fill(0);
     if(!this.recipe?.imagUrl)
     this.url='https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_640.jpg'
     else{

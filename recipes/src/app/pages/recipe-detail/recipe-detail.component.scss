@@ -1,5 +1,5 @@
 .recipicture{
-    height: 25vh;
+    height: 30vh;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -15,7 +15,7 @@
     flex-direction: row;
     text-align: center;
     height: 25%;
-    width: 12%;
+    width: 20%;
 }
 .category-container>p{
     margin: 0;
@@ -68,4 +68,9 @@
 #trahs-warp{
     display: flex;
     justify-content: left;
+}
+#cat{
+    color: black;
+    font-size: 100%;
+
 }

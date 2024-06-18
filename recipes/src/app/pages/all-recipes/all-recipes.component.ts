@@ -21,7 +21,7 @@ export class AllRecipesComponent {
    selectedCategories='סננ לפי קטגוריה'
    isOpenFilter=false
   constructor(private recipeService:RecipeServiceService,router:Router ) {
-    recipeService.getAllRecipe().subscribe(data=>{
+    recipeService.pagin(1,6,'').subscribe(data=>{
       this.recipes=data
        console.log('data in all recipes',data);
         

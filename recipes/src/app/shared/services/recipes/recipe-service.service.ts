@@ -14,6 +14,7 @@ export class RecipeServiceService {
   // private recipesUser$:BehaviorSubject<Recipes[]>=new BehaviorSubject<Recipes[]>([]);
   private userRecipe:Recipes[]=[];
   private filteredRecipes:Recipes[]=[]
+  imageFile?:File;
   constructor(private router:Router) { 
      
   }
@@ -34,20 +35,22 @@ getRecipesByUSer(userId:string){
   return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByUser/${userId}`);
 }
 
-getRecByPTime(pt:string)
+getRecByPTime(pt:number)
 {
   return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByPreperationTime/${pt}`)
 }
 
-addRecipes(user2Add:User)
+addRecipes(user2Add:FormData)
 {
-  return this.http.post<Recipes>(`${this.baseRecipsURl}/addrecipe`,user2Add).subscribe(data=>{
+   this.http.post<Recipes>(`${this.baseRecipsURl}/addrecipe`,user2Add).subscribe(data=>{
      this.userRecipe.push(data);
+     console.log('recipe user after addin recipe',this.userRecipe);
+     
   })
 
 }
-updateRecipes(id:string,updatedUser:User){
-  return this.http.put<Recipes>(`${this.baseRecipsURl}/updateRecipes/${id}`,updatedUser)
+updateRecipes(id:string,updatedRecipe:FormData){
+  return this.http.put<Recipes>(`${this.baseRecipsURl}/updateRecipes/${id}`,updatedRecipe)
 }
 
 deleteRecipe(id:string){
@@ -64,6 +67,17 @@ deleteRecipe(id:string){
  public get filtered_recipe()  {
   return this.filteredRecipes
  }
+ 
+ public get userRecipes()  {
+  return this.userRecipe;
+ }
+ 
+ public set image_file(v : any) {
+  this.imageFile=v;
+ }
+ public get image_file():any{
+    return this.imageFile
+}
  
 }
 

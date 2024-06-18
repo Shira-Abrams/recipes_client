@@ -4,3 +4,115 @@ form{
     justify-content: center;
     align-items: center;
 }
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+  
+  /* Style the button */
+  .btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+
+  }
+  .btn-l{
+    background-color: black;
+    color: white;
+    padding: 2%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+    margin: 3%;
+  }
+  .btn-submit{
+    background-color: black;
+    color: white;
+    padding: 0.5%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1%;
+    font-size: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+
+  }
+  .btn-submit:hover{
+    background-color: #a02521; /* Darker shade of primary color */
+   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
+  .btn-submit:disabled{
+    background-color: #cccccc; /* Grey color for disabled state */
+    cursor: not-allowed; /* Not allowed cursor for disabled state */
+    box-shadow: none; /* Remove box shadow */
+  }
+ 
+  .image-div{
+    width: 35vh;
+    height: 35vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-div>p{
+     text-align: center;
+     justify-content: center;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  // #fileInput
+  // {
+  //   background-color: white;
+  //   color: #a02521;
+  //   padding: 1%;
+  //   border: none;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+  //   font-size: 100%;
+
+  // }
+  #fileInput1{
+    background-color: white;
+    color: #a02521;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+
+  }
+  #fileInput-add{
+    background-color: black;
+    color: white;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 100%;
+    margin: 1%;
+  }
+
+  .mat-mdc-form-field-infix {
+    flex: auto;
+    min-width: 0;
+    width: 244px;
+    position: relative;
+    box-sizing: border-box;
+}

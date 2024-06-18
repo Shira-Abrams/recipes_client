@@ -1,9 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+
+// $theme: mat.define-theme((
+//   color: (
+//     theme-type: dark,
+//     primary: mat.$violet-palette,
+//   ),
+  
+// ));
 html,body{
      direction: rtl;
     height: 100%;
     width: 100%;
     margin: 0;
   
-    background-color: #f9f9f9;
+    // background-color: #f9f9f9;
 }

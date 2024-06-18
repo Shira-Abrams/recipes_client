@@ -18,6 +18,8 @@ import { Categories } from '../../shared/models/categories';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { RankFilterPipe } from '../../shared/pipes/rank-filter.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @Component({
   selector: 'app-represent-recipes',
   standalone: true,
@@ -29,7 +31,8 @@ import { RankFilterPipe } from '../../shared/pipes/rank-filter.pipe';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule,
-    RankFilterPipe
+    RankFilterPipe,
+    MatProgressSpinnerModule
   ],
   templateUrl: './represent-recipes.component.html',
   styleUrl: './represent-recipes.component.scss'
@@ -41,7 +44,7 @@ export class RepresentRecipesComponent implements OnInit{
   timePrepertaion=0;
   rank=0
   StartPage:number=1
-  mountOfpage:number=3;
+  mountOfpage:number=6;
   @Input()
   recipes:Recipes[]=[];
   
@@ -135,35 +138,20 @@ export class RepresentRecipesComponent implements OnInit{
        this.StartPage=1
       console.log(this.recipes);
       console.log('--------------------------');
-         this.categoriesServices.getCategoriesByIdAndRecipe(this.selectedCategories).subscribe(data=>{
+         this.categoriesServices.getCategoriesByIdAndRecipe(this.selectedCategories).subscribe((data:Categories)=>{         
+            console.log('filter by category all data is equal = ',data);
+
            console.log('filter by category= ',data.recipes);
+             
            this.recipes=data.recipes; 
            this.temRecipes=data.recipes
            console.log(this.recipes);
          })
-
- 
  }
 
  filterBYTime()
  {  
-  console.log('temp recipes in  filterBYTime is=',this.temRecipes);
   
-  this.StartPage=1
-  console.log('preaperation time =',this.timePrepertaion,'rank =',this.rank);
-  
-   if(this.rank==0)
-    {
-         this.recipes=  this.recipes.filter(x=>x.preperationTime==this.timePrepertaion)
-         console.log('at filter time rank =',this.rank);
-        
-    }
-   else
-   {
-    this.recipes=this.temRecipes.filter(x=>x.preperationTime==this.timePrepertaion&&this.rank==x.difficulty)
-    console.log('at this preaprtion time =',this.recipes);
-   }
-
     
  }
  filterByRank()
@@ -174,7 +162,7 @@ export class RepresentRecipesComponent implements OnInit{
       {
           this.recipes=  this.recipes.filter(x=>x.difficulty==this.rank)
           console.log();
-          
+                                                                                                       
 
       }
      else{

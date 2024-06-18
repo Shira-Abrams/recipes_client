@@ -10,17 +10,17 @@
         </div>
         
         <div id="filter" *ngIf="isOpenFilter" >
-       
-         
-       
-            <div class="select-container">
-                <select name="category selctor" class='styled-select' [(ngModel)]="this.selectedCategories" (change)="filterByCategory()"   >
-                   @for(item of allCategories;track item)
-                   {
-                         <option value="{{item._id}}" >{{item.description}}</option>
-                   }
-                </select>
-            </div>
+              <p>סננן לפי קטגוריה</p>
+              <mat-form-field style="direction: rtl;">
+                <mat-label>בחר קטגוריה</mat-label>
+                <mat-select [(ngModel)]="this.selectedCategories"   name="category"   (ngModelChange)="filterByCategory()" >
+                  @for (category of allCategories; track category) {
+                    <mat-option [value]="category._id">{{category.description}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+
+            <p>סנן לפי זמן הכנה: </p>
 
             <div class="select-container">
                 <select name="category selctor" class='styled-select' [(ngModel)]="this.timePrepertaion" (change)="filterBYTime()" >
@@ -36,7 +36,7 @@
                   
                 </select>
             </div>
-
+            <p>סנן לפי דרגת קושי</p>
             <div class="select-container">
                 <select name="category selctor" class='styled-select' [(ngModel)]="this.rank"  (change)="filterByRank()" [ariaPlaceholder]="'דרגת קושי'">
                   
@@ -80,6 +80,9 @@
     </div>
   
 </main>
-<div style="height: 100%;" *ngIf="this.recipes.length==0">
+<!-- <div style="height: 100%;" *ngIf="this.recipes.length==0">
     <p> לא נמצאו מתוכנים העונים לתנאי הסינון  </p>
-  </div>
+ </div> -->
+ <div style=" width: 100%;height: 100%;  display: flex; text-align: center ; justify-content: center;"  *ngIf="recipes.length==0">  <mat-spinner></mat-spinner> </div>
+
+ 

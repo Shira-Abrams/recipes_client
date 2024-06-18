@@ -16,8 +16,8 @@
 
 <mat-card class="example-card">
    <!-- <div class="card-image">
-     <img src="{{url}}" alt="">
-   </div> -->
+      <img src="{{url}}" alt="">
+   </div> -->                  
    <!-- [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" -->
   <div  style="background-image: url('{{url}}');"  class="divimg"> </div>
  
@@ -26,11 +26,8 @@
         <p style="margin: 0;">משך ההכנה : {{this.recipe?.preperationTime |time }} </p>
         <div id="warpRank">
           <p>דרגת קושי :</p>
-            <!-- <div *ngFor="let item of rnakArray ;let i=index" id="rank">
-                <img src="../../../assets/star.png" alt="">
-           </div> -->
-           <div   appForDirective id="rank">
-            <img src="../../../assets/star.png" alt="">
+          
+           <div [appForDirective]="recipe?.difficulty" id="rank">
            </div>
 
         </div>

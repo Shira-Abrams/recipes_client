@@ -25,7 +25,12 @@ export class UserRecipesComponent implements OnInit {
         this.userRecipes=data;
         console.log('user Recipe =',this.userRecipes);
         
-      })
+      }) 
+    }
+    else{
+      this.userRecipes=this.recipeServices.userRecipes;
+      console.log('at user-recipe user-recipes = ', this.recipeServices.userRecipes);
+      
     }
     
     console.log('user Recipe =',this.userRecipes);

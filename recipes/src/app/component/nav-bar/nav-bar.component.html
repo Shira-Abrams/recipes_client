@@ -6,7 +6,6 @@
             <a routerLink="/home"> 
                 <img src="../../../assets/foodTuch.png" alt="logo" class="img">
             </a>
-            <a routerLink="/categories">קטגוריות</a>
             <a routerLink="/allRecipe" routerLinkActive="router-link-active" >לכל המתכונים</a>
             @if(userService.token){
                     <a routerLink="userRecipes/{{this.userService.currentUser?.id}}">ספר המתכונים שלי</a>   
@@ -27,7 +26,7 @@
 
            }
            @else {
-                <button style="width: 13%;">
+                <button style="width: 13%;" id="logout">
                     <a  (click)="LogOut()" style="font-size: 100%;">התנתקות</a>
 
                 </button>
