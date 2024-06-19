@@ -4,59 +4,51 @@
             <input type="text" class="search-input" placeholder="חפש מתכון..." [(ngModel)]="this.searchaValue" (input)="filterBySearch()">
             <img src="../../../assets/search.png" alt="search icon" class="search-icon">
         </div> 
-        <div id="filterIcon"   *ngIf="!isOpenFilter">
+        <div id="filterIcon"   >
             <img src="../../../assets/filter.png" alt="filter" (click)="isOpenFilter=!isOpenFilter">
             <p> סינונים נוספים</p>
         </div>
         
         <div id="filter" *ngIf="isOpenFilter" >
-              <p>סננן לפי קטגוריה</p>
+              <p style="color: #a02521;">: לפי קטגוריה</p>
               <mat-form-field style="direction: rtl;">
                 <mat-label>בחר קטגוריה</mat-label>
-                <mat-select [(ngModel)]="this.selectedCategories"   name="category"   (ngModelChange)="filterByCategory()" >
+                <mat-select [(ngModel)]="this.selectedCategories"   name="category"    >
+                    <mat-option [value]=''>-</mat-option>
                   @for (category of allCategories; track category) {
-                    <mat-option [value]="category._id">{{category.description}}</mat-option>
+                    <mat-option [value]="category.description">{{category.description}}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
 
-            <p>סנן לפי זמן הכנה: </p>
 
             <div class="select-container">
-                <select name="category selctor" class='styled-select' [(ngModel)]="this.timePrepertaion" (change)="filterBYTime()" >
-                   
-                   
-                         <option value="{{10}}" >{{'10 דק`'}}</option>
-                         <option value="{{15}}" >{{'15 דק`'}}</option>
-                         <option value="{{30}}" >{{'חצי שעה' }}</option>
-                         <option value="{{60}}" >{{'שעה'}}</option>
-                         <option value="{{61}}" >{{ 'שעה +'}}</option>
-
-
-                  
-                </select>
+                
             </div>
-            <p>סנן לפי דרגת קושי</p>
             <div class="select-container">
-                <select name="category selctor" class='styled-select' [(ngModel)]="this.rank"  (change)="filterByRank()" [ariaPlaceholder]="'דרגת קושי'">
-                  
-                         <option value="{{1}}" >{{1}}</option>
-                         <option value="{{2}}" >{{2}}</option>
+                <p  style="color: #a02521;">סנן לפי זמן הכנה: </p>
+                <mat-form-field class="example-full-width">
+                    <mat-label > זמן הכנה:</mat-label>
+                    <input matInput type="number" [(ngModel)]="timePrepertaion" [min]="1">
+                </mat-form-field>
+                <p style="color: #a02521;">סנן לפי דרגת קושי: </p>
 
-                         <option value="{{3}}" >{{3}}</option>
-                         <option value="{{4}}" >{{4}}</option>
-                         <option value="{{5}}" >{{5}}</option>
-
-                  
-                </select>
+                <mat-form-field class="example-full-width">
+                    <mat-label >דרגת קושי: </mat-label>
+                    <input matInput type="number" [(ngModel)]="rank" min="{{1}}" [max]="5">
+                </mat-form-field>
             </div>
-              
+            <div  id="fiter-butt-warp">
+                <button class="fiter-but" (click)="clickFilter()">סנן</button>   
+                <button  class="fiter-but" (click)="cleanFilter()">נקה סינונים</button>
+
+            </div>              
         </div>
     </header>
 
    
    
-   
+      <h1 *ngIf="isFiltered&&selectedCategories">קטגוריה {{this.selectedCategories}}</h1>
     
     <div class="all-recipe" *ngIf="this.recipes.length!=0" >
         @for(item of recipes  ; track item.name)
@@ -74,8 +66,10 @@
     
     
     <div id="buttons">
-        <button (click)="prevPage()" *ngIf="this.StartPage>1">עמוד קודם</button>
-        <button (click)="nextPage()" *ngIf="(this.selectedCategories!=''&&this.recipes.length>=(this.StartPage+1)*mountOfpage)||(this.selectedCategories==''&&this.recipes.length>=mountOfpage)">עמוד הבא</button>
+        <button (click)="prevPage()" *ngIf="this.StartPage>1" class="but-prevNext">עמוד קודם</button>
+        <button (click)="nextPage()" *ngIf="flag" 
+            class="but-prevNext"
+            >עמוד הבא</button>
 
     </div>
   

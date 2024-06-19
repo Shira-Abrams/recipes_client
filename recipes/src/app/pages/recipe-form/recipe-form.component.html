@@ -44,16 +44,16 @@
 <div>
   <mat-form-field class="example-full-width">
     <mat-label> דרגת קושי </mat-label>
-    <input matInput placeholder="דרגת קושי " value=""   id="difficulty" formControlName="difficulty" type="number">
+    <input matInput placeholder="דרגת קושי " value=""   id="difficulty" formControlName="difficulty" type="number" [max]="5" [min]="1">
   </mat-form-field>
-  <p *ngIf="addRecipeForm.get('difficulty')?.errors&&addRecipeForm.get('difficulty')?.dirty"  style="color: #a02521;margin: 0;">דרגת קושי מקסימלית 5 </p>
+  <p *ngIf="addRecipeForm.get('difficulty')?.errors&&addRecipeForm.get('difficulty')?.touched"  style="color: #a02521;margin: 0;">דרגת קושי מקסימלית 5 </p>
 
 </div>
  
 <div>
   <mat-form-field class="example-full-width">
     <mat-label>  זמן הכנה </mat-label>
-    <input matInput placeholder="דרגת קושי " value=""   id="preperationTime"   formControlName="preperationTime" type="number">
+    <input matInput placeholder="דרגת קושי " value=""   id="preperationTime"   formControlName="preperationTime" type="number"  [min]="1">
   </mat-form-field>
 
 </div>
