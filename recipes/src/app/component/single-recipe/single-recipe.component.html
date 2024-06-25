@@ -22,10 +22,10 @@
   <div  style="background-image: url('{{url}}');"  class="divimg"> </div>
  
     <div class="text-era">
-        <h2>{{this.recipe?.name}}</h2>
-        <p style="margin: 0;">משך ההכנה : {{this.recipe?.preperationTime |time }} </p>
+        <h2  class="fonts">{{this.recipe?.name}}</h2>
+        <p style="margin: 0;" class="fonts">משך ההכנה : {{this.recipe?.preperationTime |time }} </p>
         <div id="warpRank">
-          <p>דרגת קושי :</p>
+          <p class="fonts">דרגת קושי :</p>
           
            <div [appForDirective]="recipe?.difficulty" id="rank">
            </div>

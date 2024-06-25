@@ -17,8 +17,8 @@
 
     <div class="profileEria">
         @if(!userService.token){
-            <button>
-                 <a routerLink="/register" style="pad: 1vh;">הרשמה / </a>
+            <button id="register">
+                 <a routerLink="/register" >הרשמה / </a>
                  <a routerLink="/login">התחברות</a>
             </button>
            
@@ -26,7 +26,7 @@
 
            }
            @else {
-                <button style="width: 13%;" id="logout">
+                <button  id="logout">
                     <a  (click)="LogOut()" style="font-size: 100%;">התנתקות</a>
 
                 </button>

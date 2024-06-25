@@ -1,19 +1,19 @@
 <main style="width: 100%;" id="main">
          <div    style="background-image: url('{{imgeUrl}}');"  class="recipicture"></div>
-         <h1 id="name">{{currentRecipe?.name}}</h1>
+         <h1 id="name" class="fonts">{{currentRecipe?.name}}</h1>
    
          <mat-divider></mat-divider> 
          <div class="header">
            
 
             <div class="category-container"> 
-             <p style="color: #a02521;">קטגוריות :</p>
+             <p style="color: #a02521;"class="fonts">קטגוריות :</p>
              <!-- <div *ngFor="let item of currentRecipe?.categories"  let i="index">{{item}},</div> -->
-              <p id="cat">{{currentRecipe?.categories}}</p>
+              <p id="cat" class="fonts">{{currentRecipe?.categories}}</p>
             </div>
             
             <div id="rank-container"> 
-                <p>דרגת קושי   : </p>
+                <p class="fonts">דרגת קושי   : </p>
                 <div [appForDirective]="currentRecipe?.difficulty" id="rank">
                 </div>
 
@@ -28,24 +28,24 @@
                 <img src="../../../assets/download.png" id="trash" alt="" (click)="generatePdf('main','sample.pdf')">
               </div>
 
-            <h2 style="color: #a02521;">מצרכים </h2>
+            <h2 style="color: #a02521;" class="fonts">מצרכים </h2>
             <div *ngFor="let item of currentRecipe?.layersArray; let i=index">
-              <h3>{{item.description}}</h3>
+              <h3  class="fonts">{{item.description}}</h3>
               <div *ngFor="let ingridient of item.ingredients" class="ingridient-list">
                    <img src="https://cdn-icons-png.flaticon.com/128/3686/3686629.png" alt="spoon" class="spoon">
-                    <p>{{ingridient}}</p>
+                    <p class="fonts">{{ingridient}}</p>
               </div>
             </div>
              
-              <h2 style="color: #a02521;">הוראות הכנה</h2>
+              <h2 style="color: #a02521;" class="fonts">הוראות הכנה</h2>
              <div>
              </div> 
              <div *ngFor="let instruction of currentRecipe?.preperationInstruction ;let i=index" >
-                       <p>{{i+1}}.{{instruction}} </p>
+                       <p class="fonts">{{i+1}}.{{instruction}} </p>
              </div>
              </div>
 
-         <h2  style="text-align: center ;color: #a02521;">בתאבון !!!</h2>
+         <h2  style="text-align: center ;color: #a02521;" class="fonts">בתאבון !!!</h2>
 
 </main>
 

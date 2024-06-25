@@ -19,6 +19,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Recipes } from '../../shared/models/recipes';
 import { OnChanges } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-recipe-form',
   standalone: true,
@@ -37,7 +39,11 @@ export class RecipeFormComponent implements OnInit {
    formData=new FormData()
    editedRecipe?:any;
    stringRecipe?:any
-   constructor(private categorieService:CategorieServiceService,private recipeServices:RecipeServiceService,private userServices:UserServiceService,private router:Router,private activatedRoute:ActivatedRoute) {
+   constructor(private categorieService:CategorieServiceService,private recipeServices:RecipeServiceService,
+    private userServices:UserServiceService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private snackBar:MatSnackBar) {
        console.log('recipe for eidt  before parse to json= ' ,this.editedRecipe);
        this.editedRecipe=this.activatedRoute.snapshot.params['recipe2edit'];
        this.stringRecipe=this.activatedRoute.snapshot.params['recipe2edit'];
@@ -188,7 +194,7 @@ export class RecipeFormComponent implements OnInit {
       ]),
       preperationInstruction:new FormArray([new FormControl(this.editedRecipe.preperationInstruction[0],Validators.required)]),
       image:new FormControl(),
-      isPrivate:new FormControl(this.editedRecipe?.isPrivate)
+      isPrivate:new FormControl(this.editedRecipe.isprivate)
   }) 
 
  
@@ -312,7 +318,7 @@ export class RecipeFormComponent implements OnInit {
         })
 
       }
-      
+      this.snackBar.open('המתכון נוסף בהצלחה ','close')
    }
    
    

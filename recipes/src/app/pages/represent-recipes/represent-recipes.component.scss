@@ -212,6 +212,31 @@
    // justify-content: center;
     align-items: center;
   }
-  option{
+  .fonts{
+    font-family: AmaticSC-Bold;
+  }
+  @media(max-width:900px)
+  {
+    #filterIcon{
+      justify-content: left;
 
+    }
+    .search-container{
+      width: 30%;
+    }
+  }
+  @media (max-width:700px) {
+    .search-container{
+      width: 50%;
+    }
+  }
+  @media (max-width:500px) {
+    .search-container{
+      width: 70%;
+    }
+  }
+  @media (max-width:300px) {
+    .search-container{
+      width: 100%;
+    }
   }

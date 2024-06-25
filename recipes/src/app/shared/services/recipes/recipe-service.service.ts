@@ -32,7 +32,12 @@ export class RecipeServiceService {
   }
 
 getRecipesByUSer(userId:string){
-  return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByUser/${userId}`);
+  return this.http.get<Recipes[]>(`${this.baseRecipsURl}/getRecipesByUser/${userId}`)
+  //  .subscribe(data=>{
+  //    this.userRecipe=data;
+  //    console.log('at recipes server the user recipes is ',data);
+     
+  //  });
 }
 
 getRecByPTime(pt:number)
@@ -78,6 +83,12 @@ deleteRecipe(id:string){
  public get image_file():any{
     return this.imageFile
 }
+
+
+public set userRecipes(value) {
+ this.userRecipe=value;
+}
+
  
 }
 

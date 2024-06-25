@@ -6,17 +6,17 @@
         </div> 
         <div id="filterIcon"   >
             <img src="../../../assets/filter.png" alt="filter" (click)="isOpenFilter=!isOpenFilter">
-            <p> סינונים נוספים</p>
+            <p class="fonts"> סינונים נוספים</p>
         </div>
         
         <div id="filter" *ngIf="isOpenFilter" >
-              <p style="color: #a02521;">: לפי קטגוריה</p>
+              <p style="color: #a02521;" class="fonts">  סננן לפי קטגוריה : </p>
               <mat-form-field style="direction: rtl;">
-                <mat-label>בחר קטגוריה</mat-label>
+                <mat-label class="fonts">בחר קטגוריה</mat-label>
                 <mat-select [(ngModel)]="this.selectedCategories"   name="category"    >
                     <mat-option [value]=''>-</mat-option>
                   @for (category of allCategories; track category) {
-                    <mat-option [value]="category.description">{{category.description}}</mat-option>
+                    <mat-option [value]="category.description"  class="fonts">{{category.description}}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
@@ -26,21 +26,21 @@
                 
             </div>
             <div class="select-container">
-                <p  style="color: #a02521;">סנן לפי זמן הכנה: </p>
+                <p  style="color: #a02521;" class="fonts">סנן לפי זמן הכנה: </p>
                 <mat-form-field class="example-full-width">
                     <mat-label > זמן הכנה:</mat-label>
                     <input matInput type="number" [(ngModel)]="timePrepertaion" [min]="1">
                 </mat-form-field>
-                <p style="color: #a02521;">סנן לפי דרגת קושי: </p>
+                <p style="color: #a02521;" class="fonts">סנן לפי דרגת קושי: </p>
 
                 <mat-form-field class="example-full-width">
-                    <mat-label >דרגת קושי: </mat-label>
+                    <mat-label class="fonts">דרגת קושי: </mat-label>
                     <input matInput type="number" [(ngModel)]="rank" min="{{1}}" [max]="5">
                 </mat-form-field>
             </div>
             <div  id="fiter-butt-warp">
-                <button class="fiter-but" (click)="clickFilter()">סנן</button>   
-                <button  class="fiter-but" (click)="cleanFilter()">נקה סינונים</button>
+                <button class="fiter-but fonts"(click)="clickFilter()">סנן</button>   
+                <button  class="fiter-but fonts" (click)="cleanFilter()">נקה סינונים</button>
 
             </div>              
         </div>
@@ -48,9 +48,9 @@
 
    
    
-      <h1 *ngIf="isFiltered&&selectedCategories">קטגוריה {{this.selectedCategories}}</h1>
+      <h1 *ngIf="isFiltered&&selectedCategories" class="fonts" style="color: #a02521;">קטגוריה {{this.selectedCategories}}</h1>
     
-    <div class="all-recipe" *ngIf="this.recipes.length!=0" >
+    <div class="all-recipe" *ngIf="this.recipes.length!=0"  (click)="openSnackBar()">
         @for(item of recipes  ; track item.name)
         {
             <div class="single-recipe" >
@@ -66,9 +66,9 @@
     
     
     <div id="buttons">
-        <button (click)="prevPage()" *ngIf="this.StartPage>1" class="but-prevNext">עמוד קודם</button>
-        <button (click)="nextPage()" *ngIf="flag" 
-            class="but-prevNext"
+        <button (click)="prevPage()" *ngIf="this.StartPage>1&&this.source=='all-recipes'&&recipes.length!=0" class="but-prevNext fonts"  >עמוד קודם</button>
+        <button (click)="nextPage()" *ngIf="flag&&this.source=='all-recipes'" 
+            class="but-prevNext fonts"
             >עמוד הבא</button>
 
     </div>

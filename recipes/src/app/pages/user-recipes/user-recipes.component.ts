@@ -21,17 +21,19 @@ export class UserRecipesComponent implements OnInit {
   ngOnInit() {
     this.userId= this.activatedRoute.snapshot.params['userId']
     if(this.userRecipes.length==0){
-      this.recipeServices.getRecipesByUSer(this.userId).subscribe(data=>{
+      this.recipeServices.getRecipesByUSer(this.userId)
+      .subscribe(data=>{
         this.userRecipes=data;
+        this.recipeServices.userRecipes=data;
         console.log('user Recipe =',this.userRecipes);
         
       }) 
     }
     else{
-      this.userRecipes=this.recipeServices.userRecipes;
-      console.log('at user-recipe user-recipes = ', this.recipeServices.userRecipes);
-      
+          this.userRecipes=this.recipeServices.userRecipes;
+
     }
+
     
     console.log('user Recipe =',this.userRecipes);
 

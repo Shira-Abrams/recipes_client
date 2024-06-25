@@ -7,3 +7,28 @@ body{
     background-repeat: no-repeat;
 
 }
+.fonts{
+    color: white;
+    font-family: AmaticSC-Bold;
+    font-size: 27px;
+    text-align: center;
+   
+
+}
+#warpText{
+    padding-left: 45%;
+    padding-top: 15%;
+}
+.cursor {
+    display: inline-block;
+    width: 1px;
+    background-color: white;
+    animation: blink 0.7s steps(1) infinite;
+  }
+
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
