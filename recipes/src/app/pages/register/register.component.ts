@@ -54,24 +54,20 @@ export class RegisterComponent {
     console.log('u= ',u.email,u.password);
     console.log();
     
-   const existUser= this.Uservice.Users.find(x=>x.email==u.email||x.password==u.password)
-   console.log('isExistUser',existUser);
-
-   if(existUser!=undefined)
-    {
-      this.isExistUser=true
-      console.log('user exist not allowed to signup ',existUser);
-          
-    }
-    else{
+  
+    
        this.Uservice.signup(form.value) .subscribe(user=>{
        console.log('user signup seccesfuly user =',user);
        this.Uservice.token=user.token
        this.Uservice.currentUser={username:user.user.username,id:user.user._id};
        console.log('userService=',this.Uservice.currentUser,'tokenService =',this.Uservice.token);
        this.router.navigateByUrl('allRecipe');
+       },error=>{
+         this.isExistUser=true;
+         console.log(error);
+         
        })    
-    }
+    
    
      
   }

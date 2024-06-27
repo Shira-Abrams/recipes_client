@@ -34,7 +34,7 @@ export class RecipeFormComponent implements OnInit {
    lastCategoryFill=false
    categoriesList:Categories[]=[];
    cat =new FormControl('')
-   isprivate: boolean=false;
+   isprivate?: boolean=false;
    imagefile?:File
    formData=new FormData()
    editedRecipe?:any;
@@ -70,25 +70,7 @@ export class RecipeFormComponent implements OnInit {
        
    }
   
-  // addRecipeForm:FormGroup=new FormGroup({
-  //     name:new FormControl('',Validators.required),
-  //     description:new FormControl('',Validators.required),
-  //     categories :new  FormControl('',Validators.required),
-  //     otherCategory:new  FormControl('',Validators.required),
-  //     difficulty:new FormControl('',[Validators.required,Validators.min(1),Validators.max(5)] ),
-  //     preperationTime:new FormControl('',Validators.required),
-  //     layersArray:new FormArray([
-  //         new FormGroup({
-  //            description:new FormControl(''),
-  //            ingredients:new FormArray([
-  //              new FormControl('',Validators.required)
-  //            ])
-  //         })
-  //     ]),
-  //     preperationInstruction:new FormArray([new FormControl('',Validators.required)]),
-  //     image:new FormControl(),
-  //     isPrivate:new FormControl('')
-  // })
+  
   get categories(): FormControl {
         return this.addRecipeForm?.get('categories') as FormControl;
   }
@@ -318,7 +300,12 @@ export class RecipeFormComponent implements OnInit {
         })
 
       }
-      this.snackBar.open('המתכון נוסף בהצלחה ','close')
+      if(!this.stringRecipe)
+      this.snackBar.open('המתכון נוסף בהצלחה ','סגור')
+      else{
+        this.snackBar.open('השינויים נשמרו בהצלחה ','סגור')
+
+      }
    }
    
    
